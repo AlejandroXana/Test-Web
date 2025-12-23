@@ -1,0 +1,1131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Manual del Desarrollador - Plugin Sincronización">
+  <Header />
+
+  <main class="docs-page">
+    <div class="docs-container">
+      <!-- Sidebar / Índice -->
+      <aside class="docs-sidebar">
+        <div class="sidebar-header">
+          <h2>Manual del Desarrollador</h2>
+          <span class="version-badge">v1.0.0</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <h3 class="nav-section-title">Introducción</h3>
+            <ul class="nav-list">
+              <li><a href="#overview" class="nav-link active">Visión General</a></li>
+              <li><a href="#requirements" class="nav-link">Requisitos del Sistema</a></li>
+              <li><a href="#installation" class="nav-link">Instalación</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Configuración</h3>
+            <ul class="nav-list">
+              <li><a href="#initial-setup" class="nav-link">Configuración Inicial</a></li>
+              <li><a href="#api-connection" class="nav-link">Conexión con API</a></li>
+              <li><a href="#sync-options" class="nav-link">Opciones de Sincronización</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Uso Avanzado</h3>
+            <ul class="nav-list">
+              <li><a href="#hooks" class="nav-link">Hooks y Filtros</a></li>
+              <li><a href="#cli" class="nav-link">Comandos WP-CLI</a></li>
+              <li><a href="#events" class="nav-link">Eventos y Callbacks</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Referencia API</h3>
+            <ul class="nav-list">
+              <li><a href="#endpoints" class="nav-link">Endpoints REST</a></li>
+              <li><a href="#authentication" class="nav-link">Autenticación</a></li>
+              <li><a href="#responses" class="nav-link">Respuestas y Errores</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Troubleshooting</h3>
+            <ul class="nav-list">
+              <li><a href="#common-issues" class="nav-link">Problemas Comunes</a></li>
+              <li><a href="#debug-mode" class="nav-link">Modo Debug</a></li>
+              <li><a href="#logs" class="nav-link">Logs y Diagnóstico</a></li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Contenido Principal -->
+      <div class="docs-content">
+        <div class="content-header">
+          <span class="breadcrumb">Documentación / Plugin Sincronización</span>
+          <h1>Manual del Desarrollador</h1>
+          <p class="lead">Guía completa para desarrolladores sobre el Plugin de Sincronización de Xana Connector.</p>
+        </div>
+
+        <!-- Sección: Visión General -->
+        <section id="overview" class="doc-section">
+          <h2>Visión General</h2>
+          <p>El Plugin de Sincronización de Xana Connector permite mantener sincronizados los productos entre Xana Product Manager y tu tienda WooCommerce de forma automática y bidireccional.</p>
+
+          <div class="info-box">
+            <div class="info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+            </div>
+            <div class="info-content">
+              <strong>Nota:</strong> Este plugin requiere una licencia activa de Xana Connector para funcionar correctamente.
+            </div>
+          </div>
+
+          <h3>Características Principales</h3>
+          <ul class="feature-list">
+            <li>Sincronización automática de productos, precios y stock</li>
+            <li>Soporte para productos variables y atributos</li>
+            <li>Cola de procesamiento asíncrona para mejor rendimiento</li>
+            <li>Webhooks para actualizaciones en tiempo real</li>
+            <li>API REST completa para integraciones personalizadas</li>
+          </ul>
+        </section>
+
+        <!-- Sección: Requisitos -->
+        <section id="requirements" class="doc-section">
+          <h2>Requisitos del Sistema</h2>
+          <p>Antes de instalar el plugin, asegúrate de que tu servidor cumple con los siguientes requisitos:</p>
+
+          <table class="requirements-table">
+            <thead>
+              <tr>
+                <th>Requisito</th>
+                <th>Mínimo</th>
+                <th>Recomendado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PHP</td>
+                <td>7.4</td>
+                <td>8.1+</td>
+              </tr>
+              <tr>
+                <td>WordPress</td>
+                <td>5.8</td>
+                <td>6.4+</td>
+              </tr>
+              <tr>
+                <td>WooCommerce</td>
+                <td>6.0</td>
+                <td>8.0+</td>
+              </tr>
+              <tr>
+                <td>Memoria PHP</td>
+                <td>128MB</td>
+                <td>256MB+</td>
+              </tr>
+              <tr>
+                <td>MySQL</td>
+                <td>5.7</td>
+                <td>8.0+</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Sección: Instalación -->
+        <section id="installation" class="doc-section">
+          <h2>Instalación</h2>
+          <p>Sigue estos pasos para instalar el plugin en tu sitio WordPress:</p>
+
+          <div class="steps">
+            <div class="step">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h4>Descargar el Plugin</h4>
+                <p>Descarga el archivo ZIP del plugin desde tu panel de control de Xana Connector.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h4>Subir a WordPress</h4>
+                <p>Ve a <code>Plugins → Añadir nuevo → Subir plugin</code> y selecciona el archivo ZIP.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h4>Activar el Plugin</h4>
+                <p>Haz clic en "Activar" una vez completada la instalación.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <span class="step-number">4</span>
+              <div class="step-content">
+                <h4>Configurar Licencia</h4>
+                <p>Ve a <code>WooCommerce → Xana Sync</code> e introduce tu clave de licencia.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Configuración Inicial -->
+        <section id="initial-setup" class="doc-section">
+          <h2>Configuración Inicial</h2>
+          <p>Una vez instalado el plugin, deberás configurar los parámetros básicos de conexión.</p>
+
+          <h3>Credenciales de API</h3>
+          <p>Para conectar con Xana Product Manager, necesitarás:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>wp-config.php</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre is:raw><code>// Credenciales de Xana Connector
+define('XANA_API_KEY', 'tu-api-key-aqui');
+define('XANA_API_SECRET', 'tu-api-secret-aqui');
+define('XANA_STORE_ID', 'tu-store-id');</code></pre>
+          </div>
+        </section>
+
+        <!-- Sección: Conexión API -->
+        <section id="api-connection" class="doc-section">
+          <h2>Conexión con API</h2>
+          <p>El plugin se comunica con la API de Xana Product Manager mediante llamadas REST autenticadas.</p>
+
+          <h3>Verificar Conexión</h3>
+          <p>Puedes verificar el estado de la conexión programáticamente:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>PHP</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre is:raw><code>// Verificar conexión con Xana
+$connector = XanaConnector::getInstance();
+$status = $connector-&gt;testConnection();
+
+if ($status['connected']) {
+    echo 'Conexión exitosa';
+} else {
+    echo 'Error: ' . $status['message'];
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- Sección: Opciones de Sincronización -->
+        <section id="sync-options" class="doc-section">
+          <h2>Opciones de Sincronización</h2>
+          <p>Configura cómo y cuándo se sincronizan los datos entre ambas plataformas.</p>
+
+          <h3>Modos de Sincronización</h3>
+          <div class="options-grid">
+            <div class="option-card">
+              <h4>Automática</h4>
+              <p>Los cambios se sincronizan automáticamente mediante webhooks.</p>
+            </div>
+            <div class="option-card">
+              <h4>Manual</h4>
+              <p>Sincroniza productos manualmente desde el panel de administración.</p>
+            </div>
+            <div class="option-card">
+              <h4>Programada</h4>
+              <p>Configura sincronizaciones automáticas en intervalos definidos.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Hooks y Filtros -->
+        <section id="hooks" class="doc-section">
+          <h2>Hooks y Filtros</h2>
+          <p>Personaliza el comportamiento del plugin usando los hooks de WordPress disponibles.</p>
+
+          <h3>Acciones (Actions)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span>PHP</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre is:raw><code>// Ejecutar código antes de sincronizar un producto
+add_action('xana_before_sync_product', function($product_id, $data) {
+    // Tu código aquí
+}, 10, 2);
+
+// Ejecutar código después de sincronizar
+add_action('xana_after_sync_product', function($product_id, $result) {
+    // Tu código aquí
+}, 10, 2);</code></pre>
+          </div>
+
+          <h3>Filtros (Filters)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span>PHP</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre is:raw><code>// Modificar datos antes de enviar a Xana
+add_filter('xana_product_data', function($data, $product) {
+    $data['custom_field'] = get_post_meta($product-&gt;get_id(), '_custom', true);
+    return $data;
+}, 10, 2);
+
+// Filtrar productos a sincronizar
+add_filter('xana_should_sync_product', function($should_sync, $product_id) {
+    // Excluir productos de una categoría específica
+    if (has_term('no-sync', 'product_cat', $product_id)) {
+        return false;
+    }
+    return $should_sync;
+}, 10, 2);</code></pre>
+          </div>
+        </section>
+
+        <!-- Sección: CLI -->
+        <section id="cli" class="doc-section">
+          <h2>Comandos WP-CLI</h2>
+          <p>Administra la sincronización desde la línea de comandos usando WP-CLI.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre><code># Sincronizar todos los productos
+wp xana sync --all
+
+# Sincronizar un producto específico
+wp xana sync --product=123
+
+# Ver estado de la cola
+wp xana queue status
+
+# Limpiar cola de sincronización
+wp xana queue clear
+
+# Verificar conexión
+wp xana test-connection</code></pre>
+          </div>
+        </section>
+
+        <!-- Sección: Eventos -->
+        <section id="events" class="doc-section">
+          <h2>Eventos y Callbacks</h2>
+          <p>El plugin emite eventos que puedes escuchar para integraciones personalizadas.</p>
+
+          <table class="events-table">
+            <thead>
+              <tr>
+                <th>Evento</th>
+                <th>Descripción</th>
+                <th>Parámetros</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>xana_sync_started</code></td>
+                <td>Inicio de sincronización</td>
+                <td>$batch_id</td>
+              </tr>
+              <tr>
+                <td><code>xana_sync_completed</code></td>
+                <td>Sincronización completada</td>
+                <td>$batch_id, $results</td>
+              </tr>
+              <tr>
+                <td><code>xana_sync_error</code></td>
+                <td>Error durante sincronización</td>
+                <td>$error, $context</td>
+              </tr>
+              <tr>
+                <td><code>xana_product_updated</code></td>
+                <td>Producto actualizado</td>
+                <td>$product_id, $changes</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Sección: Endpoints -->
+        <section id="endpoints" class="doc-section">
+          <h2>Endpoints REST</h2>
+          <p>El plugin expone endpoints REST para integraciones externas.</p>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code>/wp-json/xana/v1/products</code>
+            </div>
+            <p>Obtiene la lista de productos sincronizados.</p>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method post">POST</span>
+              <code>/wp-json/xana/v1/sync</code>
+            </div>
+            <p>Inicia una sincronización manual.</p>
+          </div>
+
+          <div class="endpoint">
+            <div class="endpoint-header">
+              <span class="method get">GET</span>
+              <code>/wp-json/xana/v1/status</code>
+            </div>
+            <p>Obtiene el estado actual de la sincronización.</p>
+          </div>
+        </section>
+
+        <!-- Sección: Autenticación -->
+        <section id="authentication" class="doc-section">
+          <h2>Autenticación</h2>
+          <p>Las llamadas a la API requieren autenticación mediante API Key.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>cURL</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre><code>curl -X GET "https://tu-sitio.com/wp-json/xana/v1/products" \
+  -H "X-Xana-API-Key: tu-api-key" \
+  -H "X-Xana-Signature: sha256-signature"</code></pre>
+          </div>
+        </section>
+
+        <!-- Sección: Respuestas -->
+        <section id="responses" class="doc-section">
+          <h2>Respuestas y Errores</h2>
+          <p>La API devuelve respuestas en formato JSON con códigos de estado HTTP estándar.</p>
+
+          <h3>Códigos de Estado</h3>
+          <table class="status-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Significado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="status-code success">200</span></td>
+                <td>Operación exitosa</td>
+              </tr>
+              <tr>
+                <td><span class="status-code warning">400</span></td>
+                <td>Error en la solicitud</td>
+              </tr>
+              <tr>
+                <td><span class="status-code error">401</span></td>
+                <td>No autorizado</td>
+              </tr>
+              <tr>
+                <td><span class="status-code error">500</span></td>
+                <td>Error del servidor</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Sección: Problemas Comunes -->
+        <section id="common-issues" class="doc-section">
+          <h2>Problemas Comunes</h2>
+
+          <div class="faq-item">
+            <h4>Los productos no se sincronizan</h4>
+            <p>Verifica que la licencia esté activa y las credenciales de API sean correctas. Comprueba también que el cron de WordPress esté funcionando.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Error de timeout durante sincronización</h4>
+            <p>Aumenta el límite de tiempo de ejecución de PHP o usa la sincronización por lotes para catálogos grandes.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Las imágenes no se importan</h4>
+            <p>Asegúrate de que la carpeta <code>wp-content/uploads</code> tenga permisos de escritura y hay espacio disponible.</p>
+          </div>
+        </section>
+
+        <!-- Sección: Debug -->
+        <section id="debug-mode" class="doc-section">
+          <h2>Modo Debug</h2>
+          <p>Activa el modo debug para obtener información detallada sobre el proceso de sincronización.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>wp-config.php</span>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <pre is:raw><code>// Activar modo debug de Xana
+define('XANA_DEBUG', true);
+define('XANA_DEBUG_LOG', true);</code></pre>
+          </div>
+
+          <div class="warning-box">
+            <div class="warning-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="warning-content">
+              <strong>Advertencia:</strong> No dejes el modo debug activado en producción, ya que puede afectar el rendimiento.
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Logs -->
+        <section id="logs" class="doc-section">
+          <h2>Logs y Diagnóstico</h2>
+          <p>Los logs se almacenan en <code>wp-content/uploads/xana-logs/</code> y pueden consultarse desde el panel de administración.</p>
+
+          <h3>Niveles de Log</h3>
+          <ul class="log-levels">
+            <li><span class="log-level info">INFO</span> Operaciones normales</li>
+            <li><span class="log-level warning">WARNING</span> Advertencias no críticas</li>
+            <li><span class="log-level error">ERROR</span> Errores que requieren atención</li>
+            <li><span class="log-level debug">DEBUG</span> Información detallada para desarrollo</li>
+          </ul>
+        </section>
+
+        <!-- Footer de documentación -->
+        <div class="docs-footer">
+          <p>¿No encuentras lo que buscas? <a href="/#contact">Contacta con soporte</a></p>
+          <p class="last-updated">Última actualización: Diciembre 2024</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Highlight active section in sidebar based on scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.doc-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-100px 0px -70% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href')?.substring(1);
+        const target = document.getElementById(targetId || '');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Copy button functionality
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.code-block')?.querySelector('code');
+        if (code) {
+          navigator.clipboard.writeText(code.textContent || '');
+          btn.textContent = 'Copiado!';
+          setTimeout(() => btn.textContent = 'Copiar', 2000);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .docs-page {
+    padding-top: 72px;
+    min-height: 100vh;
+  }
+
+  .docs-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Sidebar */
+  .docs-sidebar {
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: var(--space-6);
+    background: var(--white);
+    border-right: 1px solid var(--gray-200);
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .sidebar-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+  }
+
+  .version-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+  }
+
+  .nav-section {
+    margin-bottom: var(--space-6);
+  }
+
+  .nav-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+    margin-bottom: var(--space-3);
+  }
+
+  .nav-list {
+    list-style: none;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    border-radius: var(--radius-md);
+    transition: all 0.2s;
+    margin-bottom: 2px;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-purple);
+    background: var(--gray-50);
+  }
+
+  .nav-link.active {
+    color: var(--primary-purple);
+    background: rgba(124, 58, 237, 0.1);
+    font-weight: 500;
+  }
+
+  /* Content */
+  .docs-content {
+    padding: var(--space-8) var(--space-12);
+    max-width: 900px;
+  }
+
+  .content-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: var(--space-2);
+  }
+
+  .content-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  .doc-section {
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .doc-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .doc-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+  }
+
+  .doc-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .doc-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+  }
+
+  .doc-section p {
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+
+  .doc-section code {
+    background: var(--gray-100);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+    color: var(--primary-purple);
+  }
+
+  /* Info/Warning boxes */
+  .info-box, .warning-box {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    margin: var(--space-4) 0;
+  }
+
+  .info-box {
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+  }
+
+  .info-icon {
+    color: var(--primary-blue);
+    flex-shrink: 0;
+  }
+
+  .info-content {
+    font-size: 0.9375rem;
+    color: var(--gray-700);
+  }
+
+  .warning-box {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+
+  .warning-icon {
+    color: var(--warning);
+    flex-shrink: 0;
+  }
+
+  .warning-content {
+    font-size: 0.9375rem;
+    color: var(--gray-700);
+  }
+
+  /* Feature list */
+  .feature-list {
+    list-style: none;
+    margin: var(--space-4) 0;
+  }
+
+  .feature-list li {
+    position: relative;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-2);
+    color: var(--gray-600);
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+  }
+
+  /* Tables */
+  .requirements-table, .events-table, .status-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-4) 0;
+  }
+
+  .requirements-table th, .events-table th, .status-table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--gray-100);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+  }
+
+  .requirements-table td, .events-table td, .status-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+  }
+
+  .requirements-table td code, .events-table td code {
+    background: var(--gray-100);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+  }
+
+  /* Steps */
+  .steps {
+    margin: var(--space-6) 0;
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+  .step-content h4 {
+    margin-bottom: var(--space-1);
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  /* Code blocks */
+  .code-block {
+    margin: var(--space-4) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .code-header span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  .copy-btn {
+    font-size: 0.75rem;
+    padding: var(--space-1) var(--space-3);
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover {
+    background: var(--gray-50);
+  }
+
+  .code-block pre {
+    margin: 0;
+    padding: var(--space-4);
+    background: var(--gray-900);
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    background: none;
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  /* Options grid */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+
+  .option-card {
+    padding: var(--space-4);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s;
+  }
+
+  .option-card:hover {
+    border-color: var(--primary-purple);
+    box-shadow: var(--shadow-md);
+  }
+
+  .option-card h4 {
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+  }
+
+  .option-card p {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  /* Endpoints */
+  .endpoint {
+    padding: var(--space-4);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    margin: var(--space-3) 0;
+  }
+
+  .endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .method {
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+
+  .method.get {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+  }
+
+  .method.post {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+  }
+
+  .endpoint-header code {
+    font-size: 0.9rem;
+    background: var(--gray-100);
+    padding: var(--space-1) var(--space-2);
+  }
+
+  .endpoint p {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  /* Status codes */
+  .status-code {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+  }
+
+  .status-code.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+  }
+
+  .status-code.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+  }
+
+  .status-code.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+  }
+
+  /* FAQ items */
+  .faq-item {
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    margin: var(--space-3) 0;
+  }
+
+  .faq-item h4 {
+    color: var(--gray-900);
+  }
+
+  .faq-item p {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  /* Log levels */
+  .log-levels {
+    list-style: none;
+    margin: var(--space-4) 0;
+  }
+
+  .log-levels li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+    color: var(--gray-600);
+  }
+
+  .log-level {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    min-width: 70px;
+    text-align: center;
+  }
+
+  .log-level.info {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+  }
+
+  .log-level.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+  }
+
+  .log-level.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+  }
+
+  .log-level.debug {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--primary-purple);
+  }
+
+  /* Docs footer */
+  .docs-footer {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+  }
+
+  .docs-footer p {
+    color: var(--gray-500);
+    font-size: 0.9375rem;
+  }
+
+  .docs-footer a {
+    color: var(--primary-purple);
+    font-weight: 500;
+  }
+
+  .docs-footer a:hover {
+    text-decoration: underline;
+  }
+
+  .last-updated {
+    font-size: 0.8rem !important;
+    color: var(--gray-400) !important;
+    margin-top: var(--space-2);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .docs-container {
+      grid-template-columns: 240px 1fr;
+    }
+
+    .docs-content {
+      padding: var(--space-6) var(--space-8);
+    }
+
+    .options-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .docs-container {
+      grid-template-columns: 1fr;
+    }
+
+    .docs-sidebar {
+      position: relative;
+      top: 0;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .docs-content {
+      padding: var(--space-6);
+    }
+
+    .content-header h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

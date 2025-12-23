@@ -24,6 +24,117 @@
     <ul class="nav-links">
       <li><a href="/#features">Características</a></li>
       <li><a href="/#pricing">Precios</a></li>
+      <li class="has-megamenu">
+        <button class="nav-link-btn" id="docs-trigger">
+          Documentación
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="megamenu" id="megamenu">
+          <div class="megamenu-inner">
+            <!-- Columna: Desarrollador -->
+            <div class="megamenu-section">
+              <div class="megamenu-section-header">
+                <div class="megamenu-icon developer">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Manual del Desarrollador</h3>
+                  <p>Documentación técnica del plugin</p>
+                </div>
+              </div>
+              <ul class="megamenu-links">
+                <li>
+                  <a href="/docs#overview">
+                    <span class="link-title">Visión General</span>
+                    <span class="link-desc">Introducción al plugin de sincronización</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs#installation">
+                    <span class="link-title">Instalación</span>
+                    <span class="link-desc">Guía paso a paso de instalación</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs#hooks">
+                    <span class="link-title">Hooks y Filtros</span>
+                    <span class="link-desc">Personaliza el comportamiento</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs#endpoints">
+                    <span class="link-title">API REST</span>
+                    <span class="link-desc">Endpoints y autenticación</span>
+                  </a>
+                </li>
+              </ul>
+              <a href="/docs" class="megamenu-view-all">
+                Ver documentación completa
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Columna: Addons -->
+            <div class="megamenu-section">
+              <div class="megamenu-section-header">
+                <div class="megamenu-icon addons">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>Documentación de Addons</h3>
+                  <p>Guías para cada extensión</p>
+                </div>
+              </div>
+              <ul class="megamenu-links">
+                <li>
+                  <a href="/docs/addons#elementor">
+                    <span class="link-title">Elementor</span>
+                    <span class="link-desc">Widgets y sincronización visual</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs/addons#divi">
+                    <span class="link-title">Divi Builder</span>
+                    <span class="link-desc">Módulos personalizados para Divi</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs/addons#flatsome">
+                    <span class="link-title">Flatsome</span>
+                    <span class="link-desc">Integración con UX Builder</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/docs/addons#wpbakery">
+                    <span class="link-title">WPBakery</span>
+                    <span class="link-desc">Elementos para el compositor</span>
+                  </a>
+                </li>
+              </ul>
+              <a href="/docs/addons" class="megamenu-view-all">
+                Ver todos los addons
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="/#contact">Contacto</a></li>
     </ul>
@@ -141,6 +252,33 @@
 
   mobileMenuBtn?.addEventListener('click', () => {
     navLinks?.classList.toggle('show');
+  });
+
+  // Megamenu
+  const docsTrigger = document.getElementById('docs-trigger');
+  const megamenu = document.getElementById('megamenu');
+  const hasMegamenu = document.querySelector('.has-megamenu');
+
+  // Show on hover (desktop)
+  hasMegamenu?.addEventListener('mouseenter', () => {
+    megamenu?.classList.add('show');
+  });
+
+  hasMegamenu?.addEventListener('mouseleave', () => {
+    megamenu?.classList.remove('show');
+  });
+
+  // Toggle on click (for accessibility and mobile)
+  docsTrigger?.addEventListener('click', (e) => {
+    e.preventDefault();
+    megamenu?.classList.toggle('show');
+  });
+
+  // Close megamenu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!hasMegamenu?.contains(e.target as Node)) {
+      megamenu?.classList.remove('show');
+    }
   });
 </script>
 
@@ -332,6 +470,189 @@
     color: var(--gray-700);
   }
 
+  /* Megamenu styles */
+  .has-megamenu {
+    position: static;
+  }
+
+  .nav-link-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    transition: color 0.2s;
+    padding: var(--space-2) 0;
+  }
+
+  .nav-link-btn:hover {
+    color: var(--primary-purple);
+  }
+
+  .nav-chevron {
+    transition: transform 0.2s;
+  }
+
+  .has-megamenu:hover .nav-chevron,
+  .megamenu.show ~ .nav-link-btn .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .megamenu {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: 720px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl), 0 0 60px rgba(124, 58, 237, 0.1);
+    border: 1px solid var(--gray-200);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    z-index: 1001;
+  }
+
+  .megamenu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .megamenu-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .megamenu-section {
+    padding: var(--space-6);
+  }
+
+  .megamenu-section:first-child {
+    border-right: 1px solid var(--gray-200);
+  }
+
+  .megamenu-section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .megamenu-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .megamenu-icon.developer {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    color: var(--primary-purple);
+  }
+
+  .megamenu-icon.addons {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+    color: var(--primary-blue);
+  }
+
+  .megamenu-section-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 2px;
+  }
+
+  .megamenu-section-header p {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    margin: 0;
+  }
+
+  .megamenu-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .megamenu-links a {
+    display: block;
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s;
+  }
+
+  .megamenu-links a:hover {
+    background: var(--gray-50);
+  }
+
+  .megamenu-links .link-title {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 2px;
+  }
+
+  .megamenu-links a:hover .link-title {
+    color: var(--primary-purple);
+  }
+
+  .megamenu-links .link-desc {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+  }
+
+  .megamenu-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    border-radius: var(--radius-md);
+    transition: all 0.2s;
+  }
+
+  .megamenu-view-all:hover {
+    background: rgba(124, 58, 237, 0.1);
+  }
+
+  .megamenu-view-all svg {
+    transition: transform 0.2s;
+  }
+
+  .megamenu-view-all:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .megamenu {
+      width: calc(100vw - 48px);
+      max-width: 600px;
+    }
+
+    .megamenu-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .megamenu-section:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--gray-200);
+    }
+  }
+
   @media (max-width: 768px) {
     .nav-links {
       display: none;
@@ -356,6 +677,27 @@
 
     #login-btn span {
       display: none;
+    }
+
+    .megamenu {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+      transform: translateX(0) translateY(-10px);
+      border-radius: 0;
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+    }
+
+    .megamenu.show {
+      transform: translateX(0) translateY(0);
+    }
+
+    .megamenu-section {
+      padding: var(--space-4);
     }
   }
 </style>
