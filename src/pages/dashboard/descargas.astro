@@ -1,0 +1,532 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+---
+
+<Layout title="Descargas">
+  <Header />
+
+  <main class="dashboard">
+    <div class="container">
+      <div class="dashboard-header">
+        <div class="breadcrumb">
+          <a href="/">Inicio</a>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+          <span>Descargas</span>
+        </div>
+        <h1>Centro de Descargas</h1>
+        <p>Descarga el plugin principal y los addons para tu instalación de WordPress</p>
+      </div>
+
+      <div class="downloads-section">
+        <div class="section-title">
+          <h2>Plugin Principal</h2>
+          <span class="badge badge-success">Requerido</span>
+        </div>
+
+        <div class="download-card main">
+          <div class="download-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="12" fill="url(#main-gradient)"/>
+              <path d="M14 18L24 12L34 18V30L24 36L14 30V18Z" stroke="white" stroke-width="2.5" fill="none"/>
+              <path d="M24 12V36M14 18L34 30M34 18L14 30" stroke="white" stroke-width="2" opacity="0.5"/>
+              <defs>
+                <linearGradient id="main-gradient" x1="0" y1="0" x2="48" y2="48">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="download-info">
+            <h3>XanaConnector para WooCommerce</h3>
+            <p>Plugin principal que conecta Xana Product Manager con tu tienda WooCommerce. Incluye sincronización automática, mapeo de campos y panel de control.</p>
+            <div class="download-meta">
+              <span class="version">v2.4.1</span>
+              <span class="size">2.8 MB</span>
+              <span class="date">Actualizado: 15 Dic 2024</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary download-btn" data-file="xana-connector-woocommerce.zip">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Descargar
+          </a>
+        </div>
+      </div>
+
+      <div class="downloads-section">
+        <div class="section-title">
+          <h2>Addons para Page Builders</h2>
+          <span class="badge badge-primary">Opcionales</span>
+        </div>
+
+        <div class="downloads-grid">
+          <div class="download-card">
+            <div class="download-icon elementor">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#92003B"/>
+                <rect x="12" y="12" width="4" height="16" fill="white"/>
+                <rect x="20" y="12" width="8" height="4" fill="white"/>
+                <rect x="20" y="18" width="8" height="4" fill="white"/>
+                <rect x="20" y="24" width="8" height="4" fill="white"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Elementor</h3>
+              <p>Widgets personalizados para mostrar productos sincronizados con el editor visual de Elementor.</p>
+              <div class="download-meta">
+                <span class="version">v1.2.0</span>
+                <span class="size">856 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-elementor-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="download-icon divi">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#7C3AED"/>
+                <path d="M20 10L30 20L20 30L10 20L20 10Z" stroke="white" stroke-width="2.5" fill="none"/>
+                <circle cx="20" cy="20" r="4" fill="white"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Divi</h3>
+              <p>Módulos de Divi para integrar productos de Xana en tus layouts con el Divi Builder.</p>
+              <div class="download-meta">
+                <span class="version">v1.1.5</span>
+                <span class="size">724 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-divi-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="download-icon wpbakery">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#0073AA"/>
+                <rect x="10" y="10" width="8" height="8" rx="2" fill="white"/>
+                <rect x="22" y="10" width="8" height="8" rx="2" fill="white"/>
+                <rect x="10" y="22" width="8" height="8" rx="2" fill="white"/>
+                <rect x="22" y="22" width="8" height="8" rx="2" fill="white"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para WPBakery</h3>
+              <p>Elementos personalizados para el compositor visual WPBakery Page Builder.</p>
+              <div class="download-meta">
+                <span class="version">v1.0.8</span>
+                <span class="size">612 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-wpbakery-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="download-icon beaver">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#1E73BE"/>
+                <ellipse cx="20" cy="22" rx="10" ry="8" fill="white"/>
+                <circle cx="16" cy="20" r="2" fill="#1E73BE"/>
+                <circle cx="24" cy="20" r="2" fill="#1E73BE"/>
+                <ellipse cx="20" cy="25" rx="3" ry="2" fill="#D2691E"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Beaver Builder</h3>
+              <p>Módulos de Beaver Builder para mostrar y gestionar productos sincronizados.</p>
+              <div class="download-meta">
+                <span class="version">v1.0.3</span>
+                <span class="size">548 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-beaver-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="downloads-section">
+        <div class="section-title">
+          <h2>Addons para Temas Populares</h2>
+          <span class="badge badge-primary">Opcionales</span>
+        </div>
+
+        <div class="downloads-grid">
+          <div class="download-card">
+            <div class="download-icon flatsome">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#446084"/>
+                <path d="M12 14H28V26H12V14Z" stroke="white" stroke-width="2" fill="none"/>
+                <path d="M12 14L20 20L28 14" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Flatsome</h3>
+              <p>Integración optimizada con el tema Flatsome para WooCommerce.</p>
+              <div class="download-meta">
+                <span class="version">v1.1.2</span>
+                <span class="size">432 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-flatsome-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="download-icon astra">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#5A4FCF"/>
+                <path d="M20 8L26 28H14L20 8Z" stroke="white" stroke-width="2" fill="none"/>
+                <circle cx="20" cy="16" r="3" fill="white"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Astra</h3>
+              <p>Compatibilidad extendida con el tema Astra y Starter Templates.</p>
+              <div class="download-meta">
+                <span class="version">v1.0.9</span>
+                <span class="size">368 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-astra-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="download-icon storefront">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#96588A"/>
+                <path d="M10 16L20 10L30 16V28L20 34L10 28V16Z" stroke="white" stroke-width="2" fill="none"/>
+                <path d="M20 22V28" stroke="white" stroke-width="2"/>
+                <circle cx="20" cy="18" r="2" fill="white"/>
+              </svg>
+            </div>
+            <div class="download-info">
+              <h3>Addon para Storefront</h3>
+              <p>Mejoras visuales para el tema oficial de WooCommerce.</p>
+              <div class="download-meta">
+                <span class="version">v1.0.5</span>
+                <span class="size">312 KB</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-secondary download-btn" data-file="xana-storefront-addon.zip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="help-section">
+        <div class="help-card">
+          <div class="help-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="help-content">
+            <h3>¿Necesitas ayuda con la instalación?</h3>
+            <p>Consulta nuestra documentación detallada o contacta con soporte técnico.</p>
+          </div>
+          <div class="help-actions">
+            <a href="#" class="btn btn-ghost">Ver documentación</a>
+            <a href="/#contact" class="btn btn-secondary">Contactar soporte</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Check if logged in
+  const isLoggedIn = document.cookie.includes('xana_logged_in=true');
+
+  if (!isLoggedIn) {
+    window.location.href = '/login';
+  }
+
+  // Handle download clicks (mockup - just shows alert)
+  document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fileName = (e.currentTarget as HTMLElement).dataset.file;
+      alert(`Descargando: ${fileName}\n\nEsto es un mockup - en producción se descargaría el archivo real.`);
+    });
+  });
+</script>
+
+<style>
+  @import '../../styles/global.css';
+
+  .dashboard {
+    padding-top: calc(72px + var(--space-8));
+    padding-bottom: var(--space-16);
+    min-height: 100vh;
+    background: var(--gray-50);
+  }
+
+  .dashboard-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--primary-purple);
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+  }
+
+  .dashboard-header p {
+    color: var(--gray-600);
+    font-size: 1.0625rem;
+  }
+
+  .downloads-section {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .section-title h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+
+  .download-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    border: 2px solid var(--gray-200);
+    transition: all 0.3s ease;
+  }
+
+  .download-card:hover {
+    border-color: var(--primary-purple-light);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .download-card.main {
+    background: var(--gradient-card);
+    border-color: var(--primary-purple-light);
+  }
+
+  .download-icon {
+    flex-shrink: 0;
+  }
+
+  .download-info {
+    flex: 1;
+  }
+
+  .download-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+  }
+
+  .download-info p {
+    color: var(--gray-600);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-3);
+  }
+
+  .download-meta {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .download-meta span {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .download-meta .version {
+    background: var(--gray-100);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    color: var(--primary-purple);
+  }
+
+  .download-btn {
+    flex-shrink: 0;
+  }
+
+  .downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .downloads-grid .download-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .downloads-grid .download-btn {
+    width: 100%;
+    margin-top: var(--space-2);
+  }
+
+  .help-section {
+    margin-top: var(--space-12);
+  }
+
+  .help-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    border: 2px solid var(--gray-200);
+  }
+
+  .help-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-purple);
+    flex-shrink: 0;
+  }
+
+  .help-content {
+    flex: 1;
+  }
+
+  .help-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+  }
+
+  .help-content p {
+    color: var(--gray-600);
+  }
+
+  .help-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .download-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .download-btn {
+      width: 100%;
+    }
+
+    .downloads-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .help-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .help-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .help-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

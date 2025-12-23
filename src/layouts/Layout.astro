@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Conecta Xana Product Manager con WordPress y WooCommerce de forma sencilla' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>{title} | Xana Connector</title>
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Auth state management
+      function isLoggedIn(): boolean {
+        return document.cookie.includes('xana_logged_in=true');
+      }
+
+      function login(): void {
+        document.cookie = 'xana_logged_in=true; path=/; max-age=86400';
+        window.location.href = '/dashboard/descargas';
+      }
+
+      function logout(): void {
+        document.cookie = 'xana_logged_in=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        window.location.href = '/';
+      }
+
+      // Expose to window
+      (window as any).isLoggedIn = isLoggedIn;
+      (window as any).login = login;
+      (window as any).logout = logout;
+
+      // Update UI based on auth state
+      document.addEventListener('DOMContentLoaded', () => {
+        const logged = isLoggedIn();
+        const loginBtn = document.getElementById('login-btn');
+        const userMenu = document.getElementById('user-menu');
+
+        if (loginBtn) loginBtn.style.display = logged ? 'none' : 'flex';
+        if (userMenu) userMenu.style.display = logged ? 'block' : 'none';
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

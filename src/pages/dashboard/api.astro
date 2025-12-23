@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+---
+
+<Layout title="API Keys">
+  <Header />
+
+  <main class="dashboard">
+    <div class="container">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h1>API Keys</h1>
+        <p class="coming-soon-text">Esta sección estará disponible próximamente</p>
+        <p class="coming-soon-description">
+          Genera y gestiona tus claves API para integrar XanaConnector
+          con tus propias aplicaciones y automatizaciones.
+        </p>
+        <div class="coming-soon-features">
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>Generación de API Keys</span>
+          </div>
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>Documentación interactiva</span>
+          </div>
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>Webhooks configurables</span>
+          </div>
+        </div>
+        <a href="/dashboard/descargas" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Volver a Descargas
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const isLoggedIn = document.cookie.includes('xana_logged_in=true');
+  if (!isLoggedIn) {
+    window.location.href = '/login';
+  }
+</script>
+
+<style>
+  @import '../../styles/global.css';
+
+  .dashboard {
+    padding-top: calc(72px + var(--space-8));
+    padding-bottom: var(--space-16);
+    min-height: 100vh;
+    background: var(--gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coming-soon {
+    text-align: center;
+    max-width: 500px;
+    padding: var(--space-12);
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .coming-soon-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-6);
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-purple);
+  }
+
+  .coming-soon h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+  }
+
+  .coming-soon-text {
+    color: var(--primary-purple);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+  }
+
+  .coming-soon-description {
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+  }
+
+  .coming-soon-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+    text-align: left;
+    background: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--gray-700);
+  }
+
+  .feature svg {
+    color: var(--success);
+  }
+</style>
