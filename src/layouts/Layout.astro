@@ -1,4 +1,6 @@
 ---
+import PasswordProtect from '../components/PasswordProtect.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -18,7 +20,9 @@ const { title, description = 'Conecta Xana Product Manager con WordPress y WooCo
     <title>{title} | Xana Connector</title>
   </head>
   <body>
-    <slot />
+    <PasswordProtect>
+      <slot />
+    </PasswordProtect>
     <script>
       // Auth state management
       function isLoggedIn(): boolean {
